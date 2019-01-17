@@ -7,7 +7,7 @@ Jeu dans lequel on doit déplacer Mac Gyver jusqu'aux gardien à travers un laby
 Mac Gyver doit absolument récupérer les trois outils s'il veut pouvoir endormir le gardien
 
 Script Python
-Fichiers : 
+Fichiers : structure.py, classes.py, constantes.py 
 """
 
 import pygame

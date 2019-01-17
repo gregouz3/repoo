@@ -1,6 +1,5 @@
 """Classes du jeu de labyrinthe Mac Gyver"""
 
-"""Classes du jeu de Labyrinthe Donkey Kong"""
 
 import pygame
 from pygame.locals import * 
