@@ -10,7 +10,7 @@ titre_fenetre = "Mac Gyver Labyrinthe"
 image_icone = "ressource/MacGyver.png"
 
 #Listes des images du jeu
-image_accueil = "ressource/fond.jpg"
+image_accueil = "ressource/space.jpeg"
 image_fond = "ressource/fond.jpg"
 image_mur = "ressource/mur.png"
 image_depart = "ressource/depart.png"

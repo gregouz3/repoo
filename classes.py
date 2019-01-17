@@ -39,7 +39,6 @@ class Niveau:
 		mur = pygame.image.load(image_mur).convert()
 		depart = pygame.image.load(image_depart).convert_alpha()
 		arrivee = pygame.image.load(image_arrivee).convert_alpha()
-
 		
 		#On parcourt la liste du niveau
 		num_ligne = 0
@@ -65,6 +64,7 @@ class Perso:
 	def __init__(self, MacGyver, niveau):
 		#Sprites du personnage
 		self.MacGyver = pygame.image.load(MacGyver).convert_alpha()
+		self.MacGyver = pygame.transform.scale(self.MacGyver, (30, 30))
 		#Position du personnage en cases et en pixels
 		self.case_x = 0
 		self.case_y = 0
