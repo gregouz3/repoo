@@ -32,7 +32,7 @@ continuer = 1
 while continuer:	
 	#Chargement et affichage de l'écran d'accueil
 	accueil = pygame.image.load(image_accueil).convert()
-	accueil = pygame.transform.scale(accueil, (450, 450))
+	accueil = pygame.transform.scale(accueil, (750, 750))
 
 	fenetre.blit(accueil, (0,0))
 
@@ -71,6 +71,9 @@ while continuer:
 	if choix != 0:
 		#Chargement du fond
 		fond = pygame.image.load(image_fond).convert()
+		fond = pygame.transform.scale(fond, (750, 750))
+
+
 
 		#Génération d'un niveau à partir d'un fichier
 		niveau = Niveau(choix)
@@ -78,7 +81,8 @@ while continuer:
 		niveau.afficher(fenetre)
 
 		#Création de Mac Gyver 
-		mg = Perso("ressource/MacGyver.png", niveau)
+		mg = Perso("ressource/MacGyver.png",niveau)
+
 
 	pygame.key.set_repeat(400, 30)
 
@@ -122,4 +126,7 @@ while continuer:
 
 		#Victoire -> Retour à l'accueil
 		if niveau.structure[mg.case_y][mg.case_x] == 'a':
+		
 			continuer_jeu = 0
+	
+				

@@ -37,8 +37,11 @@ class Niveau:
 		de la liste de structure renvoyée par generer()"""
 		#Chargement des images (seule celle d'arrivée contient de la transparence)
 		mur = pygame.image.load(image_mur).convert()
+		mur = pygame.transform.scale(mur, (50,50))
 		depart = pygame.image.load(image_depart).convert_alpha()
+		depart = pygame.transform.scale(depart, (50, 50))
 		arrivee = pygame.image.load(image_arrivee).convert_alpha()
+		arrivee = pygame.transform.scale(arrivee, (50,50))
 		
 		#On parcourt la liste du niveau
 		num_ligne = 0
@@ -64,18 +67,18 @@ class Perso:
 	def __init__(self, MacGyver, niveau):
 		#Sprites du personnage
 		self.MacGyver = pygame.image.load(MacGyver).convert_alpha()
-		self.MacGyver = pygame.transform.scale(self.MacGyver, (30, 30))
+		self.MacGyver = pygame.transform.scale(self.MacGyver, (50, 50))
+
 		#Position du personnage en cases et en pixels
-		self.case_x = 0
-		self.case_y = 0
-		self.x = 0
-		self.y = 0
+		self.case_x = 1
+		self.case_y = 1
+		self.x = 1
+		self.y = 1
 
 		self.direction = self.MacGyver
 
 		#Niveau dans lequel le personnage se trouve 
 		self.niveau = niveau
-	
 	
 	def deplacer(self, direction):
 		"""Methode permettant de déplacer le personnage"""
