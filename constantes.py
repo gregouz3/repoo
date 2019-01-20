@@ -11,8 +11,8 @@ image_icone = "ressource/MacGyver.png"
 
 #Listes des images du jeu
 image_accueil = "ressource/space.jpeg"
-image_fond = "ressource/fondor.jpg"
-image_mur = "ressource/murb.jpg"
+image_fond = "ressource/fondnoir.png"
+image_mur = "ressource/murgris.jpg"
 image_arrivee = "ressource/Gardien.png"
 image_depart = "ressource/depart.png"
 
