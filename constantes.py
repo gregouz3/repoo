@@ -13,5 +13,10 @@ image_icone = "ressource/MacGyver.png"
 image_accueil = "ressource/space.jpeg"
 image_fond = "ressource/fondor.jpg"
 image_mur = "ressource/murb.jpg"
-image_depart = "ressource/depart.png"
 image_arrivee = "ressource/Gardien.png"
+image_depart = "ressource/depart.png"
+
+#Listes des items 
+tube_plastique = "ressource/tube_plastique.png"
+ether = "ressource/ether.png"
+aiguille = "ressource/aiguille.png"
