@@ -13,6 +13,7 @@ Fichiers : structure.py, classes.py, constantes.py n1 ressource/toutes les image
 import pygame
 from pygame.locals import *
 
+import time
 from classes import *
 from constantes import *
 
@@ -73,8 +74,6 @@ while continuer:
 		fond = pygame.image.load(image_fond).convert()
 		fond = pygame.transform.scale(fond, (750, 750))
 
-
-
 		#Génération d'un niveau à partir d'un fichier
 		niveau = Niveau(choix)
 		niveau.generer()
@@ -82,7 +81,6 @@ while continuer:
 
 		#Création de Mac Gyver 
 		mg = Perso("ressource/MacGyver.png",niveau)
-
 
 	pygame.key.set_repeat(400, 30)
 
@@ -100,14 +98,11 @@ while continuer:
 				continuer_jeu = 0
 				continuer = 0
 			
-
-
 			elif event.type == KEYDOWN:
 				#Si l'utilisateur presse Echap ici, on revient seulement au menu
 				if event.key == K_ESCAPE:
 					continuer_jeu = 0
 				
-
 				#Touches de déplacement de Mac Gyver
 				elif event.key == K_RIGHT:
 					mg.deplacer('droite')
@@ -118,15 +113,44 @@ while continuer:
 				elif event.key == K_DOWN:
 					mg.deplacer('bas')			
 			
-		#Affichages aux nouvelles positions
-		fenetre.blit(fond, (0,0))
-		niveau.afficher(fenetre)
-		fenetre.blit(mg.direction, (mg.x, mg.y))
-		pygame.display.flip()
+				#Affichages aux nouvelles positions
+				fenetre.blit(fond, (0,0))
+				niveau.afficher(fenetre)
+				fenetre.blit(mg.direction, (mg.x, mg.y))
+				pygame.display.flip()
 
-		#Victoire -> Retour à l'accueil
-		if niveau.structure[mg.case_y][mg.case_x] == 'a':
-		
-			continuer_jeu = 0
-	
-				
+			item_list = mg.basket
+			for (i, item) in enumerate(item_list):
+				if item == '1':
+					item_list[i] = 'tube plastique'
+				elif item == '2':
+					item_list[i] = 'ether'
+				elif item == '3':
+					item_list[i] = 'aiguille'
+			if niveau.structure[mg.case_y][mg.case_x] == 'a':
+				if len(mg.basket) == 3:
+					seringue = pygame.image.load(image_seringue).convert_alpha()
+					seringue = pygame.transform.scale(seringue, (750, 750))
+					fenetre.blit(seringue, (0, 0))
+					pygame.display.flip()
+					time.sleep(2)
+					winner = pygame.image.load(image_win).convert()
+					winner = pygame.transform.scale(winner, (750,750))
+					fenetre.blit(winner, (0, 0))
+					pygame.display.flip()
+					time.sleep(5)
+					continuer_jeu = 0
+				else:
+					mort = pygame.image.load(image_mort).convert()
+					mort = pygame.transform.scale(mort, (750,750))
+					fenetre.blit(mort, (0, 0))
+					pygame.display.flip()
+					time.sleep(2)
+					looser = pygame.image.load(image_loose).convert()
+					looser = pygame.transform.scale(looser, (750,750))
+					fenetre.blit(looser, (0, 0))
+					pygame.display.flip()
+					time.sleep(5)
+					continuer_jeu = 0
+
+

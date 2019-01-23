@@ -15,6 +15,10 @@ image_fond = "ressource/fondnoir.png"
 image_mur = "ressource/murgris.jpg"
 image_arrivee = "ressource/Gardien.png"
 image_depart = "ressource/depart.png"
+image_win = "ressource/win.jpeg"
+image_loose = "ressource/loose.png"
+image_mort = "ressource/mort.jpg"
+image_seringue = "ressource/seringue.png" 
 
 #Listes des items 
 tube_plastique = "ressource/tube_plastique.png"

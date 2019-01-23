@@ -50,15 +50,20 @@ class Niveau:
 		#Chargement des images #reajustement des images 
 		mur = pygame.image.load(image_mur).convert()
 		mur = pygame.transform.scale(mur, (50,50))
+
 		depart = pygame.image.load(image_depart).convert_alpha()
 		depart = pygame.transform.scale(depart, (50, 50))
+
 		arrivee = pygame.image.load(image_arrivee).convert_alpha()
 		arrivee = pygame.transform.scale(arrivee, (50,50))
+
 		item0 = pygame.image.load(tube_plastique).convert()
 		item0 = pygame.transform.scale(item0, (50,50))
 		item0.set_colorkey((255, 255, 255))
+		
 		item1 = pygame.image.load(ether).convert_alpha()
 		item1 = pygame.transform.scale(item1, (50, 50))
+		
 		item2 = pygame.image.load(aiguille).convert()
 		item2.set_colorkey((0,0,0))
 		item2 = pygame.transform.scale(item2, (50, 50)) 
@@ -105,6 +110,7 @@ class Perso:
 
 		#Niveau dans lequel le personnage se trouve 
 		self.niveau = niveau
+		#item
 		self.basket = []
 	
 	def deplacer(self, direction):
