@@ -63,7 +63,7 @@ while continuer:
 
 			elif event.type == KEYDOWN:				
 				#Lancement du niveau 1
-				if event.key == K_SPACE:
+				if event.key == K_RETURN:
 					continuer_accueil = 0	#On quitte l'accueil
 					choix = 'n1'		#On définit le niveau à charger
 
