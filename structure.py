@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 # -*- coding: Utf-8 -*
 
 """
@@ -133,12 +134,12 @@ while continuer:
 					seringue = pygame.transform.scale(seringue, (750, 750))
 					fenetre.blit(seringue, (0, 0))
 					pygame.display.flip()
-					time.sleep(2)
+					time.sleep(5)
 					winner = pygame.image.load(image_win).convert()
 					winner = pygame.transform.scale(winner, (750,750))
 					fenetre.blit(winner, (0, 0))
 					pygame.display.flip()
-					time.sleep(5)
+					time.sleep(2)
 					continuer_jeu = 0
 				else:
 					mort = pygame.image.load(image_mort).convert()
