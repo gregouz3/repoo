@@ -1,3 +1,4 @@
-pkg-resources==0.0.0
 pygame==1.9.4
 
+OpenClassroom : Formation développeur d'application - Python :
+Projet 3 : Aidez MacGyver à s'échapper !

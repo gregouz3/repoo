@@ -3,155 +3,147 @@
 # -*- coding: Utf-8 -*
 
 """
-Jeu Mac Gyver Labyrinthe
-Jeu dans lequel on doit déplacer Mac Gyver jusqu'aux gardien à travers un labyrinthe. 
-Mac Gyver doit absolument récupérer les trois outils s'il veut pouvoir endormir le gardien
-
+MacGyver Labyrinth Game :
+Game in which we must move MacGyver to the Guardian throught a labyrinth . 
+MacGyver must absolutely recover the three tools if he wants to be able to lull the Guardian .
 Script Python
-Fichiers : structure.py, classes.py, constantes.py n1 ressource/toutes les images
+Files : structure.py, classes.py, constantes.py n1 ressource/pictures
 """
 
 import pygame
-from pygame.locals import *
-
 import time
+from pygame.locals import *
 from classes import *
 from constantes import *
 
 pygame.init()
+#Open the Pygame window 
+window = pygame.display.set_mode((slide_window, slide_window))
+#Slow the game icon 
+icon = pygame.image.load(picture_icon)
+pygame.display.set_icon(icon)
+#Slow the game title 
+pygame.display.set_caption(title_window)
 
-#Ouverture de la fenêtre Pygame (carré : largeur = hauteur)
-fenetre = pygame.display.set_mode((cote_fenetre, cote_fenetre))
-#Icone
-icone = pygame.image.load(image_icone)
-pygame.display.set_icon(icone)
-#Titre
-pygame.display.set_caption(titre_fenetre)
-
-
-#BOUCLE PRINCIPALE
-continuer = 1
-while continuer:	
-	#Chargement et affichage de l'écran d'accueil
-	accueil = pygame.image.load(image_accueil).convert()
-	accueil = pygame.transform.scale(accueil, (750, 750))
-
-	fenetre.blit(accueil, (0,0))
-
-	#Rafraichissement
+#Main loop
+game = 1
+while game:	
+	#Loading and viewing the home screen 
+	home = pygame.image.load(picture_home).convert()
+	home = pygame.transform.scale(home, (750, 750))
+	window.blit(home, (0,0))
+	#Refresh
 	pygame.display.flip()
+	#These variables are reset to 1 at each loop turn
+	game_game = 1
+	game_home = 1
 
-	#On remet ces variables à 1 à chaque tour de boucle
-	continuer_jeu = 1
-	continuer_accueil = 1
-
-	#BOUCLE D'ACCUEIL
-	while continuer_accueil:
-	
-		#Limitation de vitesse de la boucle
+	#Home loop
+	while game_home:
+		#Limit speed limitation
 		pygame.time.Clock().tick(30)
-	
 		for event in pygame.event.get():
-			#Si l'utilisateur quitte, on met les variables 
-			#de boucle à 0 pour n'en parcourir aucune et fermer
+			#If the user leaves, we close the game
 			if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
-				continuer_accueil = 0
-				continuer_jeu = 0
-				continuer = 0
-				#Variable de choix du niveau
-				choix = 0
-
+				game_home = 0
+				game_game = 0
+				game = 0
+				#Variable choice of level
+				choice = 0
 			elif event.type == KEYDOWN:				
-				#Lancement du niveau 1
+				#Launch of level 1
 				if event.key == K_RETURN:
-					continuer_accueil = 0	#On quitte l'accueil
-					choix = 'n1'		#On définit le niveau à charger
+					game_home = 0
+					choice = 'n1'		
+	#We check that the player has made a level choice				
+	if choice != 0:
+		#Loading the background
+		background = pygame.image.load(picture_background).convert()
+		background = pygame.transform.scale(background, (750, 750))
+		#Generate a level from a file
+		level = Level(choice)
+		level.generate()
+		level.display(window)
+		#Creation of MacGyver
+		mg = Character("ressource/MacGyver.png", level)
+		#Accelerate if the arrows keys are pressed
+		pygame.key.set_repeat(400, 30)
 
-	
-	#on vérifie que le joueur a bien fait un choix de niveau
-	#pour ne pas charger s'il quitte
-	if choix != 0:
-		#Chargement du fond
-		fond = pygame.image.load(image_fond).convert()
-		fond = pygame.transform.scale(fond, (750, 750))
-
-		#Génération d'un niveau à partir d'un fichier
-		niveau = Niveau(choix)
-		niveau.generer()
-		niveau.afficher(fenetre)
-
-		#Création de Mac Gyver 
-		mg = Perso("ressource/MacGyver.png",niveau)
-
-	pygame.key.set_repeat(400, 30)
-
-	#BOUCLE DE JEU
-	while continuer_jeu:
-	
-		#Limitation de vitesse de la boucle
-		pygame.time.Clock().tick(30)
-	
+	#Game loop
+	while game_game:
+		pygame.time.Clock().tick(30)	
 		for event in pygame.event.get():
-		
-			#Si l'utilisateur quitte, on met la variable qui continue le jeu
-			#ET la variable générale à 0 pour fermer la fenêtre
 			if event.type == QUIT:
-				continuer_jeu = 0
-				continuer = 0
-			
+				game_game = 0
+				game = 0
+
 			elif event.type == KEYDOWN:
-				#Si l'utilisateur presse Echap ici, on revient seulement au menu
+				#If the user press Esc here, we return only to the home
 				if event.key == K_ESCAPE:
-					continuer_jeu = 0
-				
-				#Touches de déplacement de Mac Gyver
+					game_game = 0				
+				#MacGyver moving keys	
 				elif event.key == K_RIGHT:
-					mg.deplacer('droite')
+					mg.move('right')
 				elif event.key == K_LEFT:
-					mg.deplacer('gauche')
+					mg.move('left')
 				elif event.key == K_UP:
-					mg.deplacer('haut')
+					mg.move('up')
 				elif event.key == K_DOWN:
-					mg.deplacer('bas')			
-			
-				#Affichages aux nouvelles positions
-				fenetre.blit(fond, (0,0))
-				niveau.afficher(fenetre)
-				fenetre.blit(mg.direction, (mg.x, mg.y))
+					mg.move('down')			
+				#Display to news positions
+				window.blit(background, (0,0))
+				level.display(window)
+				window.blit(mg.direction, (mg.x, mg.y))
 				pygame.display.flip()
 
+			#Item management
 			item_list = mg.basket
 			for (i, item) in enumerate(item_list):
 				if item == '1':
-					item_list[i] = 'tube plastique'
+					item_list[i] = 'plastic tube'
 				elif item == '2':
 					item_list[i] = 'ether'
 				elif item == '3':
-					item_list[i] = 'aiguille'
-			if niveau.structure[mg.case_y][mg.case_x] == 'a':
+					item_list[i] = 'needle'
+
+			#If MacGyver arrives at the guardian
+			if level.structure[mg.square_y][mg.square_x] == 'a':
+				#And that he rammed up all the objects
 				if len(mg.basket) == 3:
-					seringue = pygame.image.load(image_seringue).convert_alpha()
-					seringue = pygame.transform.scale(seringue, (750, 750))
-					fenetre.blit(seringue, (0, 0))
+					#WIN
+					syringe = pygame.image.load(picture_syringe).convert_alpha()
+					syringe = pygame.transform.scale(syringe, (750, 750))
+					#Display animation
+					window.blit(syringe, (0, 0))
 					pygame.display.flip()
+					#Wait 5s
 					time.sleep(5)
-					winner = pygame.image.load(image_win).convert()
-					winner = pygame.transform.scale(winner, (750,750))
-					fenetre.blit(winner, (0, 0))
+					winner = pygame.image.load(picture_win).convert()
+					winner = pygame.transform.scale(winner, (750, 750))
+					#Display victory message	
+					window.blit(winner, (0, 0))
 					pygame.display.flip()
+					#Wait 2s
 					time.sleep(2)
-					continuer_jeu = 0
+					#Back to the home
+					game_game = 0
 				else:
-					mort = pygame.image.load(image_mort).convert()
-					mort = pygame.transform.scale(mort, (750,750))
-					fenetre.blit(mort, (0, 0))
+					#LOOSE
+					death = pygame.image.load(picture_death).convert()
+					death = pygame.transform.scale(death, (750, 750))
+					#Display animation
+					window.blit(death, (0, 0))
 					pygame.display.flip()
+					#Wait 2s
 					time.sleep(2)
-					looser = pygame.image.load(image_loose).convert()
-					looser = pygame.transform.scale(looser, (750,750))
-					fenetre.blit(looser, (0, 0))
+					looser = pygame.image.load(picture_loose).convert()
+					looser = pygame.transform.scale(looser, (750, 750))
+					#Display defeat message
+					window.blit(looser, (0, 0))
 					pygame.display.flip()
+					#Wait 5s
 					time.sleep(5)
-					continuer_jeu = 0
+					#Back to the home
+					game_game = 0
 
 

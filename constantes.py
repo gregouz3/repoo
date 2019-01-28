@@ -1,26 +1,26 @@
-"""Constantes du jeu de Labyrinthe Mac Gyver"""
+"""Constants of the Mac Gyver Labyrinth Game."""
 
-#Paramètres de la fenêtre
-nombre_sprite_cote = 15
-taille_sprite = 50
-cote_fenetre = nombre_sprite_cote * taille_sprite
+#Parameters of the window
+number_sprite_slide = 15
+width_sprite = 50
+slide_window = number_sprite_slide * width_sprite
 
-#Personnalisation de la fenêtre
-titre_fenetre = "Mac Gyver Labyrinthe"
-image_icone = "ressource/MacGyver.png"
+#Customizing the window
+title_window = "Mac Gyver Labyrinth"
+picture_icon = "ressource/MacGyver.png"
 
-#Listes des images du jeu
-image_accueil = "ressource/menu.png"
-image_fond = "ressource/fondnoir.png"
-image_mur = "ressource/murgris.jpg"
-image_arrivee = "ressource/Gardien.png"
-image_depart = "ressource/depart.png"
-image_win = "ressource/wine.png"
-image_loose = "ressource/loose.png"
-image_mort = "ressource/mort.jpg"
-image_seringue = "ressource/bravo.png" 
+#List of game images
+picture_home = "ressource/home.png"
+picture_background = "ressource/black_background.png"
+picture_wall = "ressource/wall.jpg"
+picture_advent = "ressource/Guardian.png"
+picture_start= "ressource/start.png"
+picture_win = "ressource/win.jpeg"
+picture_loose = "ressource/loose.png"
+picture_death = "ressource/death.jpg"
+picture_syringe = "ressource/good.png" 
 
-#Listes des items 
-tube_plastique = "ressource/tube_plastique.png"
+#List of items 
+plastic_tube = "ressource/plastic_tube.png"
 ether = "ressource/ether.png"
-aiguille = "ressource/aiguille.png"
+needle = "ressource/needle.png"
