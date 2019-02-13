@@ -1,4 +1,9 @@
+astroid==2.1.0
+isort==4.3.4
+lazy-object-proxy==1.3.1
+mccabe==0.6.1
 pygame==1.9.4
-
-OpenClassroom : Formation développeur d'application - Python :
-Projet 3 : Aidez MacGyver à s'échapper !
+pylint==2.2.2
+six==1.12.0
+typed-ast==1.3.1
+wrapt==1.11.1
