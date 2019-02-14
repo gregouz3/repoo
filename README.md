@@ -6,7 +6,7 @@ Projet 3 : Aidez MacGyver à s'échapper !
 
 SETUP:
 
-Download and extract MacGyver's MacGyver_is_awesome.zip
+Download and extract MacGyver_is_awesome.zip
 
 The game requires python3.5+ and pygame to be installed.
 
