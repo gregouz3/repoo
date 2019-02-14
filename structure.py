@@ -14,7 +14,7 @@ import time
 import pygame
 from pygame.locals import *
 from classes import *
-from constantes import *
+from constants import *
 
 def launch_the_labyrinth():
 	"""Game launch function"""
@@ -105,6 +105,27 @@ def launch_the_labyrinth():
 						item_list[i] = 'ether'
 					elif item == '3':
 						item_list[i] = 'needle'
+
+				#display compteur item
+				if len(macgyver.basket) == 1:
+					one_item = pygame.image.load(ONE_ITEM).convert_alpha()
+					one_item = pygame.transform.scale(one_item, (50, 150))
+
+					window.blit(one_item, (650, 50))
+					pygame.display.flip()
+
+				if len(macgyver.basket) == 2:
+					two_items = pygame.image.load(TWO_ITEMS).convert_alpha()
+					two_items = pygame.transform.scale(two_items, (50, 150))
+					window.blit(two_items, (650, 50))
+					pygame.display.flip()
+
+				if len(macgyver.basket) == 3:
+					three_items = pygame.image.load(THREE_ITEMS).convert_alpha()
+					three_items = pygame.transform.scale(three_items, (50, 150))
+					window.blit(three_items, (650, 50))
+					pygame.display.flip()
+
 
 				#If MacGyver arrives at the guardian
 				if level.structure[macgyver.square_y][macgyver.square_x] == 'a':

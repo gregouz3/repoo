@@ -1,9 +1,10 @@
 """MacGyver Labyrinth Game Classes"""
 
-import pygame
 import random
-from pygame.locals import *
-from constantes import *
+import pygame
+from pygame.locals import  QUIT, KEYDOWN, K_ESCAPE, K_RETURN,\
+K_LEFT, K_RIGHT, K_UP, K_DOWN
+from constants import *
 
 class Level:
 	"""Class to create a level."""
@@ -60,7 +61,7 @@ class Level:
 		start = pygame.transform.scale(start, (50, 50))
 
 		advent = pygame.image.load(PICTURE_ADVENT).convert_alpha()
-		advent = pygame.transform.scale(advent, (50 ,50))
+		advent = pygame.transform.scale(advent, (50, 50))
 
 		item0 = pygame.image.load(PLASTIC_TUBE).convert()
 		item0 = pygame.transform.scale(item0, (50, 50))
@@ -87,7 +88,8 @@ class Level:
 					window.blit(wall, (x, y))
 				#d = Start
 				if sprite == 'd':
-					window.blit(start, (x, y))
+					start = window.blit(start, (x, y))
+
 				#a = Advent
 				if sprite == 'a':
 					window.blit(advent, (x, y))
@@ -98,7 +100,7 @@ class Level:
 					window.blit(item1, (x, y))
 				if sprite == '3':
 					window.blit(item2, (x, y))
-				#We increment the squares and lines	
+				#We increment the squares and lines
 				num_square += 1
 			num_line += 1
 
@@ -109,18 +111,16 @@ class Character:
 		#Sprites of the character
 		self.MacGyver = pygame.image.load(MacGyver).convert_alpha()
 		self.MacGyver = pygame.transform.scale(self.MacGyver, (50, 50))
-		#Position of the character in squares and pixels
-		self.x = 0
-		self.y = 0
-		self.square_x = 0
-		self.square_y = 0
 
+		self.x, self.y = 0, 0
+		self.square_x, self.square_y = self.x * WIDTH_SPRITE, self.y * WIDTH_SPRITE
 		self.direction = self.MacGyver
-		#Level in which the character is located 
+		#Level in which the character is located
 		self.level = level
 		#Creation list of items
 		self.basket = []
-	
+		#Position of the character in squares and pixels
+
 	def move(self, direction):
 		"""Method to move the character"""
 

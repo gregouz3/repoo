@@ -1,9 +1,12 @@
-OpenClassroom : Formation développeur d'application - Python : "
-Projet 3 : Aidez MacGyver à s'échapper !					   "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#repoo
+
+OpenClassroom : Formation développeur d'application - Python : 
+Projet 3 : Aidez MacGyver à s'échapper !					   
 
 
 SETUP:
+
+Download and extract MacGyver's MacGyver_is_awesome.zip
 
 The game requires python3.5+ and pygame to be installed.
 
@@ -14,7 +17,7 @@ To start the game, go in the "laby" folder and run "python3  structure.py" in a 
 
 KEYBINDS:
 
-4 directionals arrows.
+Use directionals arrows to move .
 
 Press RETURN to launch the game.
 
